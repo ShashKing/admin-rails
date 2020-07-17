@@ -1,11 +1,15 @@
 module Admin
   class UsersController < Admin::ApplicationController
-    before_action :authenticate_admin, only:[:create, :update, :destroy]
+    before_action :authenticate_admin, only:[:create, :update, :destroy, :index, :show]
     def index
         super
     end
 
     def create
+        super
+    end
+
+    def show
         super
     end
 

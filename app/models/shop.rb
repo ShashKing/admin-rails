@@ -7,6 +7,8 @@ class Shop < ActiveRecord::Base
   has_one :store_setting,dependent: :destroy
   has_many :rates,dependent: :destroy
 
+  # validates_inclusion_of :is_install, :in => [true, false]
+
   def api_version
     ShopifyApp.configuration.api_version
   end

@@ -7,21 +7,12 @@
 module Admin
   class ApplicationController < Administrate::ApplicationController
     before_action :authenticate_user!
-    before_action :authenticate_sub_admin
 
     def authenticate_admin
       if current_user.role == "admin"
         return true
       else
         redirect_to admin_shops_path
-      end
-    end
-
-    def authenticate_sub_admin
-      if current_user.role == "sub_admin" || current_user.role == "admin"
-        return true
-      else
-        redirect_to root_path
       end
     end
       # TODO Add authentication logic here.

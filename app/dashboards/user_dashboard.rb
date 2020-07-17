@@ -9,6 +9,9 @@ class UserDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
+    first_name: Field::String,
+    last_name: Field::String,
+    phone_number: Field::String,
     email: Field::String,
     password: Field::String,
     reset_password_token: Field::String,
@@ -27,6 +30,9 @@ class UserDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = %i[
   id
   email
+  first_name
+  last_name
+  phone_number
   role
   ].freeze
 
@@ -35,10 +41,9 @@ class UserDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = %i[
   id
   email
-  password
-  reset_password_token
-  reset_password_sent_at
-  remember_created_at
+  first_name
+  last_name
+  phone_number
   created_at
   updated_at
   role
@@ -49,6 +54,9 @@ class UserDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
   email
+  first_name
+  last_name
+  phone_number
   password
   role
   ].freeze

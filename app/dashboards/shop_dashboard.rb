@@ -8,13 +8,14 @@ class ShopDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    #store_setting: Field::BelongsTo,
-    store_setting: StoreAddressField.with_options(searchable_field: 'Address'),
+    store_setting: StoreAddressField,
+    # store_setting: Field::BelongsTo,
     id: Field::Number,
     shopify_domain: Field::String,
     shopify_token: Field::String,
     charge_id: Field::String.with_options(searchable: false),
     charge_cancelled: Field::Boolean,
+
     trial_ends_on: Field::DateTime,
     billing_on: Field::DateTime,
     created_at: Field::DateTime,
@@ -29,9 +30,9 @@ class ShopDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = %i[
   id
   shopify_domain
-  shopify_token
-  charge_id
+  store_setting
   trial_ends_on
+  charge_cancelled
   billing_on
   ].freeze
 
@@ -40,7 +41,6 @@ class ShopDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = %i[
   id
   shopify_domain
-  shopify_token
   charge_id
   charge_cancelled
   trial_ends_on
@@ -71,12 +71,13 @@ class ShopDashboard < Administrate::BaseDashboard
   #   COLLECTION_FILTERS = {
   #     open: ->(resources) { resources.where(open: true) }
   #   }.freeze
-  COLLECTION_FILTERS = {}.freeze
+  COLLECTION_FILTERS = [:inactive]
+
 
   # Overwrite this method to customize how shops are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(shop)
-  #   "Shop ##{shop.id}"
-  # end
+  def display_resource(shop)
+    "#{shop.shopify_domain}"
+  end
 end

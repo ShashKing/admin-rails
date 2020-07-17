@@ -31,3 +31,11 @@
 
 en:
   hello: "Hello world"
+  helpers:
+    label:
+      shop:
+        store_setting: "Shop Details"
+        shopify_domain: "Shop"
+  activerecord:
+    models:
+      shop:

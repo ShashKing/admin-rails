@@ -9,7 +9,8 @@ class StoreSettingDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     # logo_attachment: Field::HasOne,
-    shop: ShopNameField,
+    # shop: ShopNameField,
+    shop: Field::BelongsTo,
     id: Field::Number,
     shop_id: Field::Number,
     logo_height: Field::Number,
@@ -30,7 +31,6 @@ class StoreSettingDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
   id
-  shop
   address
   vat_number
   phone
@@ -80,7 +80,7 @@ class StoreSettingDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how store settings are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(store_setting)
-  #   "StoreSetting ##{store_setting.id}"
-  # end
+  def display_resource(store_setting)
+    "Store Setting"
+  end
 end
